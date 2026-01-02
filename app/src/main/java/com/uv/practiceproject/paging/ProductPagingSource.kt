@@ -2,7 +2,7 @@ package com.uv.practiceproject.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.uv.practiceproject.fetchAllProducts
+import com.uv.practiceproject.apiCallingPager.fetchAllProducts
 import com.uv.practiceproject.model.Product
 import java.lang.Exception
 

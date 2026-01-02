@@ -1,6 +1,5 @@
-package com.uv.practiceproject
+package com.uv.practiceproject.apiCallingPager
 
-import android.graphics.Color
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,10 +11,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
@@ -24,13 +19,11 @@ import coil.compose.AsyncImage
 import com.uv.practiceproject.model.Product
 
 import androidx.paging.LoadState
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CardDefaults
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.colorResource
-
+import androidx.compose.ui.text.style.TextOverflow
+import com.uv.practiceproject.R
 
 
 @Composable
@@ -165,7 +158,7 @@ fun ProductItem(product: Product) {
             Text(text = product.description,
                 style = MaterialTheme.typography.bodyMedium,
                 maxLines = 3,
-                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                overflow = TextOverflow.Ellipsis)
             Spacer(modifier = Modifier.height(4.dp))
             Text(text = "Price: $${product.price}",
                 style = MaterialTheme.typography.bodyMedium)

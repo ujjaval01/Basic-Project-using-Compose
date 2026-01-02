@@ -1,4 +1,4 @@
-package com.uv.practiceproject
+package com.uv.practiceproject.apiCallingPager
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

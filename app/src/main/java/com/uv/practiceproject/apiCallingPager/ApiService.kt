@@ -1,4 +1,4 @@
-package com.uv.practiceproject
+package com.uv.practiceproject.apiCallingPager
 
 import com.uv.practiceproject.model.Product
 import com.uv.practiceproject.model.ProductResponse
