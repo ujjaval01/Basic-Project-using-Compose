@@ -12,10 +12,14 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.uv.practiceproject.ui.theme.PracticeProjectTheme
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
@@ -28,17 +32,17 @@ class MainActivity : ComponentActivity() {
             PracticeProjectTheme {
 //                ProductListScreen(viewModel = viewModel)
                 // A surface container using the 'background' color from the theme
-//                ToastDemo()
+                ToastDemo()
 
-                Button(onClick = {
-                    val text = "Hello toast!"
-                    val duration = Toast.LENGTH_SHORT
-
-                    val toast = Toast.makeText(this, text, duration) // in Activity
-                    toast.show()
-                }) {
-                    Text(text = "Toast")
-                }
+//                Button(onClick = {
+//                    val text = "Hello toast!"
+//                    val duration = Toast.LENGTH_SHORT
+//
+//                    val toast = Toast.makeText(this, text, duration) // in Activity
+//                    toast.show()
+//                }) {
+//                    Text(text = "Toast")
+//                }
 
 
 
@@ -50,11 +54,15 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ToastDemo(modifier: Modifier = Modifier) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
 
     Button(onClick = {
-        Toast.makeText(context, "Hello Toast!", Toast.LENGTH_SHORT).show()
+        scope.async {
+            delay(3000)
+            Toast.makeText(context, "Hello Toast!", Toast.LENGTH_SHORT).show()
+        }
+
     }) {
         Text(text = "Toast")
     }
-
 }
