@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.uv.practiceproject.apiCallingPager.ProductListScreen
 import com.uv.practiceproject.apiCallingPager.ProductViewModel
+import com.uv.practiceproject.practice.CountScreen
 import com.uv.practiceproject.ui.theme.PracticeProjectTheme
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
@@ -26,8 +27,9 @@ class MainActivity : ComponentActivity() {
 //        enableEdgeToEdge()
         setContent {
             PracticeProjectTheme {
-                ProductListScreen(viewModel = viewModel)
-                // A surface container using the 'background' color from the theme
+//                ProductListScreen(viewModel = viewModel)
+
+                CountScreen()
 //                ToastDemo()
 
 //                Button(onClick = {
