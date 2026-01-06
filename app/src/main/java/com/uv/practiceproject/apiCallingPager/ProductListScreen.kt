@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.CardDefaults
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import com.uv.practiceproject.R
 
 
@@ -164,4 +165,10 @@ fun ProductItem(product: Product) {
                 style = MaterialTheme.typography.bodyMedium)
         }
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun ProductListScreenPreview(modifier: Modifier = Modifier) {
+    ProductSkeletonItem()
 }
