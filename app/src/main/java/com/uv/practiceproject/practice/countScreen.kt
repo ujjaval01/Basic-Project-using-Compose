@@ -10,6 +10,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -27,9 +28,11 @@ import kotlinx.coroutines.delay
 @Composable
 fun CountScreen(modifier: Modifier = Modifier) {
 
-    //        var count = 0
-    var count by rememberSaveable { mutableStateOf(10) }
+//            var count = 0
+    var start = 0;
+    var count by rememberSaveable { mutableIntStateOf(start) }
 //    var scope = rememberCoroutineScope()
+
 
 
     Column(modifier = modifier.fillMaxSize(),
