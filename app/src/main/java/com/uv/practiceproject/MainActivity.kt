@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -14,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.uv.practiceproject.apiCallingPager.ProductListScreen
 import com.uv.practiceproject.apiCallingPager.ProductViewModel
 import com.uv.practiceproject.practice.CountScreen
+import com.uv.practiceproject.practice.TextCompo
 import com.uv.practiceproject.ui.theme.PracticeProjectTheme
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
@@ -24,12 +26,14 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
+        enableEdgeToEdge()
         setContent {
             PracticeProjectTheme {
-//                ProductListScreen(viewModel = viewModel)
 
-                CountScreen()
+               TextCompo("Ujjaval")
+
+//                ProductListScreen(viewModel = viewModel)
+//                CountScreen()
 //                ToastDemo()
 
 //                Button(onClick = {
@@ -41,9 +45,6 @@ class MainActivity : ComponentActivity() {
 //                }) {
 //                    Text(text = "Toast")
 //                }
-
-
-
             }
         }
     }
