@@ -6,15 +6,21 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import com.uv.practiceproject.apiCallingPager.ProductListScreen
 import com.uv.practiceproject.apiCallingPager.ProductViewModel
 import com.uv.practiceproject.practice.CountScreen
+import com.uv.practiceproject.practice.CustomListViewPractice
+import com.uv.practiceproject.practice.CustomListViewPracticePreview
 import com.uv.practiceproject.practice.TextCompo
 import com.uv.practiceproject.ui.theme.PracticeProjectTheme
 import kotlinx.coroutines.async
@@ -30,7 +36,21 @@ class MainActivity : ComponentActivity() {
         setContent {
             PracticeProjectTheme {
 
-               TextCompo("Ujjaval")
+//               TextCompo("Ujjaval")
+                CustomListViewPracticePreview()
+
+                @Composable
+                fun CustomListViewPracticePreview(modifier: Modifier = Modifier) {
+                    Column (modifier = modifier
+                        .padding(10.dp)
+                        .fillMaxSize()){
+                        var i = 0
+                        while (i<= 15){
+                            CustomListViewPractice(R.drawable.anime, "Ujjaval Saini", "Android Developer", modifier)
+                            i++
+                        }
+                    }
+                }
 
 //                ProductListScreen(viewModel = viewModel)
 //                CountScreen()
