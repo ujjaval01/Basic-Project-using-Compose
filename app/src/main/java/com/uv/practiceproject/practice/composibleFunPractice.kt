@@ -1,16 +1,21 @@
 package com.uv.practiceproject.practice
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
@@ -26,15 +31,19 @@ import androidx.compose.ui.unit.sp
 import com.uv.practiceproject.R
 
 @Composable
-fun CustomListViewPractice(imgId:Int, name:String, title:String) {
-    Row(modifier = Modifier.padding(3.dp)) {
+fun CustomListViewPractice(imgId:Int, name:String, title:String, modifier: Modifier) {
+    Row(modifier.padding(5.dp)
+        .fillMaxWidth()) {
         Image(painter = painterResource(imgId), contentDescription = null,
+            contentScale = ContentScale.Crop,
             modifier = Modifier.size(50.dp)
-                .padding(2.dp))
+                .padding(2.dp)
+                .clip(CircleShape))
 
         Spacer(modifier = Modifier.height(4.dp))
 
-        Column {
+        Column(modifier = Modifier.padding(5.dp)
+            .fillMaxWidth()) {
             Text(text = name, fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(7.dp))
             Text(text = title, fontWeight = FontWeight.Light)
@@ -42,15 +51,17 @@ fun CustomListViewPractice(imgId:Int, name:String, title:String) {
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+//@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun CustomListViewPracticePreview(modifier: Modifier = Modifier) {
-    Column {
-        CustomListViewPractice(R.drawable.anime, "Ujjaval Saini", "Android Developer")
-        CustomListViewPractice(R.drawable.anime, "Harshit Saini", "Android Developer")
-        CustomListViewPractice(R.drawable.anime, "Vivek Saini", "Android Developer")
-        CustomListViewPractice(R.drawable.anime, "Akshay Saini", "Android Developer")
-
+    Column (modifier = modifier
+        .padding(10.dp)
+        .fillMaxSize()){
+        var i = 0
+        while (i<= 15){
+            CustomListViewPractice(R.drawable.anime, "Ujjaval Saini", "Android Developer", modifier)
+            i++
+        }
     }
 }
 
@@ -62,7 +73,15 @@ fun TextCompo(name: String) {
         fontSize = 36.sp,
         textAlign = TextAlign.Center,
         textDecoration = TextDecoration.Underline,
-        fontFamily = FontFamily.Cursive
+        fontFamily = FontFamily.Cursive,
+        modifier = Modifier
+            .background(Color.Yellow)
+            .size(200.dp)
+            .padding(36.dp)
+            .clip(CircleShape)
+            .background(Color.Green)
+
+
     )
 }
 
@@ -96,19 +115,19 @@ fun ButtonCompo() {
 }
 
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun TextCompoPreview(modifier: Modifier = Modifier) {
     TextCompo(name = "ujjaval")
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun ImageCompoPreview(modifier: Modifier = Modifier) {
     ImageCompo()
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun ButtonCompoPreview(modifier: Modifier = Modifier) {
     ButtonCompo()
