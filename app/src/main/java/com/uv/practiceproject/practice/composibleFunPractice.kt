@@ -79,9 +79,6 @@ fun TextCompo(name: String) {
             .size(200.dp)
             .padding(36.dp)
             .clip(CircleShape)
-            .background(Color.Green)
-
-
     )
 }
 
