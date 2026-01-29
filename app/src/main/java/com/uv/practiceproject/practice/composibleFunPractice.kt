@@ -2,6 +2,7 @@ package com.uv.practiceproject.practice
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -78,7 +79,10 @@ fun TextCompo(name: String) {
             .background(Color.Yellow)
             .size(200.dp)
             .padding(36.dp)
+            .border(4.dp, Color.Black )
             .clip(CircleShape)
+            .background(Color.Magenta)
+
     )
 }
 
