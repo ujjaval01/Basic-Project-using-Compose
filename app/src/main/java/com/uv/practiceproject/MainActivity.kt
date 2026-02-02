@@ -57,6 +57,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.uv.practiceproject.practice.CategoryListScreenUsingLazyLayout
 import com.uv.practiceproject.practice.DiceRoll
+import com.uv.practiceproject.practice.NotificationScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -68,8 +69,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PracticeProjectTheme {
-
-                DiceRoll()
+                NotificationScreen()
+//                DiceRoll()
 //                CategoryListScreenUsingLazyLayout()
 //                CategoryListScreenUsingVerticalScroll()
 //               TextCompo("Ujjaval")
