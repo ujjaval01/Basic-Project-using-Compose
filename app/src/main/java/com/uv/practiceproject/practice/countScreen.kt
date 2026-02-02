@@ -1,58 +1,92 @@
 package com.uv.practiceproject.practice
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+/* Agar hume specific imports krne h to, inko
+expend karne k liye hum ctrl+alt+o krte h */
+
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.*
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.*
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.*
 
 @Composable
-fun CountScreen(modifier: Modifier = Modifier) {
+fun NotificationScreen(modifier: Modifier = Modifier) {
+    var count by rememberSaveable { mutableIntStateOf(0) }
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxSize(1f)
+    ) {
+        NotificationCounter(count, {count++})
+        Spacer(modifier = Modifier.height(16.dp))
+        MessageBar(count)
+    }
 
+}
+
+@Composable
+fun MessageBar(count: Int) {
+    Card(
+        elevation = CardDefaults.cardElevation(4.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.Favorite,
+                contentDescription = null
+            )
+            Spacer(modifier = Modifier.width(6.dp))
+            Text(text = "Message sent so far - $count")
+        }
+    }
+}
+
+@Composable
+fun NotificationCounter(
+    count:Int,
+    increment: () -> Unit
+) {
 //            var count = 0
-    var start = 0;
-    var count by rememberSaveable { mutableIntStateOf(start) }
 //    var scope = rememberCoroutineScope()
 
-
-
-    Column(modifier = modifier.fillMaxSize(),
+    Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
         ) {
 
-        Text(text = "Count: $count",
-            fontSize = 28.sp,
+        Text(text = "You have sent $count notifications",
+            fontSize = 22.sp,
             fontWeight = FontWeight.SemiBold
         )
+
         Spacer(modifier = Modifier.height(10.dp))
-        Button(modifier = Modifier.wrapContentSize(), onClick = {
+
+        Button(
+            modifier = Modifier
+                .wrapContentSize(),
+            onClick = {
 //            scope.async {
 //                delay(2000)
-                count++
+                increment()
 //            }
         }) {
-            Text("Increase Count",
-                fontSize = 22.sp)
+            Text("Send Notification",
+                fontSize = 22.sp
+            )
         }
     }
 }
+
+@Preview(showSystemUi = true, showBackground = true)
+@Composable
+fun NotificationScreenPreview(modifier: Modifier = Modifier) {
+    NotificationScreen()
+}
+
