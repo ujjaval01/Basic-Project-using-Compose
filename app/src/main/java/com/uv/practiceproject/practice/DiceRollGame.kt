@@ -24,6 +24,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,10 +38,11 @@ import kotlinx.coroutines.delay
 @Composable
 fun DiceRoll(modifier: Modifier = Modifier) {
 
-    var dice by remember { mutableIntStateOf(0) }
-    var turn by remember { mutableIntStateOf(1) }
-    var yourScore by remember { mutableIntStateOf(0) }
-    var computerScore by remember { mutableIntStateOf(0) }
+    var dice by rememberSaveable { mutableIntStateOf(0) }
+    var turn by rememberSaveable { mutableIntStateOf(1) }
+//    var yourScore = rememberSaveable { mutableIntStateOf(0) }  // Iski(=) sath hume yourScore.value ya yourScore.IntValue ka use krna pdega
+    var yourScore by rememberSaveable { mutableIntStateOf(0) } // Iski sath kuch nhi use hota, direct yourScore use krte hai
+    var computerScore by rememberSaveable { mutableIntStateOf(0) }
 
     val gameOver = yourScore >= 100 || computerScore >= 100
     val winner = when {
@@ -58,7 +60,7 @@ fun DiceRoll(modifier: Modifier = Modifier) {
         Text("🎲 Dice: $dice")
         Spacer(modifier = Modifier.height(10.dp))
 
-        Text("👤 Your Score: $yourScore")
+        Text("👤 Your Score: ${yourScore}")
         Spacer(modifier = Modifier.height(10.dp))
         Text("👥 Computer Score: $computerScore")
         Spacer(modifier = Modifier.height(20.dp))
