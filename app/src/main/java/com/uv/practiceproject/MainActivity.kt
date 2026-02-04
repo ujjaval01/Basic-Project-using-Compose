@@ -69,8 +69,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PracticeProjectTheme {
-                NotificationScreen()
-//                DiceRoll()
+//                NotificationScreen()
+                DiceRoll()
 //                CategoryListScreenUsingLazyLayout()
 //                CategoryListScreenUsingVerticalScroll()
 //               TextCompo("Ujjaval")
